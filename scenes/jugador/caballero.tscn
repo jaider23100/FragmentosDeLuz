@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/jugador/caballero.gd" id="1_caballero"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cuerpo"]
+size = Vector2(10, 14)
+
+[node name="Caballero" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 65
+script = ExtResource("1_caballero")
+
+[node name="Placeholder" type="ColorRect" parent="."]
+offset_left = -5.0
+offset_top = -7.0
+offset_right = 5.0
+offset_bottom = 7.0
+mouse_filter = 2
+color = Color(0.78, 0.8, 0.86, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cuerpo")
+
+[node name="TimerDash" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[node name="TimerEnfriamientoDash" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+
+[connection signal="timeout" from="TimerDash" to="." method="_on_timer_dash_timeout"]
+[connection signal="timeout" from="TimerEnfriamientoDash" to="." method="_on_timer_enfriamiento_dash_timeout"]
