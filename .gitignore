@@ -1,0 +1,9 @@
+# Godot 4 (incluye .godot/export_credentials.cfg)
+.godot/
+
+# Builds exportados: se publican en las releases, no en el repositorio
+builds/
+
+# Sistema operativo
+Thumbs.db
+.DS_Store
