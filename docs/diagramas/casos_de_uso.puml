@@ -1,0 +1,54 @@
+@startuml casos_de_uso
+title Diagrama de casos de uso: Fragmentos de Luz
+left to right direction
+skinparam actorStyle awesome
+skinparam usecase {
+  BackgroundColor #F4F1E8
+  BorderColor #4A3B2C
+}
+skinparam packageStyle rectangle
+
+actor "Jugador" as J
+actor "Sistema de archivos\nuser://" as SA <<sistema>>
+
+rectangle "Fragmentos de Luz" {
+  usecase "CU-01 Iniciar partida" as CU01
+  usecase "Ver introducción" as VI
+  usecase "CU-02 Ejecutar movimiento especial" as CU02
+  usecase "CU-03 Combatir enemigo" as CU03
+  usecase "Recibir daño" as RD
+  usecase "CU-04 Completar el nivel" as CU04
+  usecase "Recoger fragmento" as RF
+  usecase "Ver cinemática final" as VC
+  usecase "Guardar mejor puntaje" as GP
+  usecase "CU-05 Ajustar volumen" as CU05
+  usecase "Guardar configuración" as GC
+  usecase "CU-06 Pausar partida" as CU06
+  usecase "Reiniciar nivel" as RN
+  usecase "Salir al menú" as SM
+  usecase "CU-07 Consultar créditos" as CU07
+  usecase "CU-08 Cargar datos guardados" as CU08
+}
+
+J --> CU01
+J --> CU02
+J --> CU03
+J --> CU04
+J --> CU05
+J --> CU06
+J --> CU07
+
+CU01 ..> VI : <<include>>
+RD .> CU03 : <<extend>>
+CU04 ..> RF : <<include>>
+CU04 ..> VC : <<include>>
+CU04 ..> GP : <<include>>
+CU05 ..> GC : <<include>>
+RN .> CU06 : <<extend>>
+CU05 .> CU06 : <<extend>>
+SM .> CU06 : <<extend>>
+
+GP --> SA
+GC --> SA
+CU08 <-- SA
+@enduml
