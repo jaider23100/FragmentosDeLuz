@@ -9,6 +9,7 @@ var _caballero: Caballero
 
 
 func before_each() -> void:
+	EstadoJuego.reiniciar()
 	_caballero = EscenaCaballero.instantiate()
 	add_child_autofree(_caballero)
 	await wait_physics_frames(1)
@@ -33,6 +34,35 @@ func test_dash_bloqueado_durante_el_enfriamiento() -> void:
 	_caballero.dash()
 	assert_false(_caballero.puede_dash, "RF-03: enfriamiento activo")
 	assert_false(_caballero.dash())
+
+
+func test_ataque_bloqueado_durante_el_enfriamiento() -> void:
+	assert_true(_caballero.atacar(), "RF-04: primer ataque")
+	assert_eq(_caballero.estado, Caballero.Estado.ATACANDO)
+	assert_false(_caballero.atacar(), "RF-04: no hay segundo ataque antes de 0,35 s")
+	await wait_seconds(_caballero.enfriamiento_ataque + 0.05)
+	assert_true(_caballero.atacar(), "RF-04: tras el enfriamiento vuelve a atacar")
+
+
+func test_dano_pasa_a_herido_con_retroceso() -> void:
+	_caballero.direccion = 1
+	_caballero.recibir_dano()
+	assert_eq(_caballero.estado, Caballero.Estado.HERIDO, "RF-05: estado HERIDO")
+	assert_eq(EstadoJuego.corazones, 2, "RN-01: pierde un corazón")
+	assert_lt(_caballero.velocity.x, 0.0, "RF-05: retrocede en sentido contrario a donde mira")
+
+
+func test_dano_durante_invulnerabilidad_no_resta() -> void:
+	_caballero.recibir_dano()
+	_caballero.recibir_dano()
+	assert_eq(EstadoJuego.corazones, 2, "RN-02: invulnerable tras el primer golpe")
+
+
+func test_dano_mortal_pasa_a_muerto() -> void:
+	EstadoJuego.corazones = 1
+	_caballero.recibir_dano()
+	assert_eq(_caballero.estado, Caballero.Estado.MUERTO, "RN-07: sin corazones queda MUERTO")
+	assert_false(_caballero.atacar(), "Muerto no puede atacar")
 
 
 func test_dash_avanza_sin_gravedad_hacia_donde_mira() -> void:
