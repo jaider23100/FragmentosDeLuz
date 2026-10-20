@@ -1,0 +1,157 @@
+[gd_resource type="SpriteFrames" load_steps=24 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/caballero/caballero_atacar.png" id="1_2vaic"]
+[ext_resource type="Texture2D" path="res://assets/sprites/caballero/caballero_caer.png" id="2_p4uj3"]
+[ext_resource type="Texture2D" path="res://assets/sprites/caballero/caballero_caminar.png" id="3_vjntg"]
+[ext_resource type="Texture2D" path="res://assets/sprites/caballero/caballero_dash.png" id="4_ppxen"]
+[ext_resource type="Texture2D" path="res://assets/sprites/caballero/caballero_doble_salto.png" id="5_v6che"]
+[ext_resource type="Texture2D" path="res://assets/sprites/caballero/caballero_herido.png" id="6_irfrn"]
+[ext_resource type="Texture2D" path="res://assets/sprites/caballero/caballero_muerto.png" id="7_i86uv"]
+[ext_resource type="Texture2D" path="res://assets/sprites/caballero/caballero_quieto.png" id="8_bo52u"]
+[ext_resource type="Texture2D" path="res://assets/sprites/caballero/caballero_saltar.png" id="9_y2k0u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ec8yb"]
+atlas = ExtResource("1_2vaic")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ns2ww"]
+atlas = ExtResource("1_2vaic")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elllf"]
+atlas = ExtResource("2_p4uj3")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iadmx"]
+atlas = ExtResource("3_vjntg")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjeog"]
+atlas = ExtResource("3_vjntg")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgcjx"]
+atlas = ExtResource("3_vjntg")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sanga"]
+atlas = ExtResource("3_vjntg")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opqu2"]
+atlas = ExtResource("4_ppxen")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1axkw"]
+atlas = ExtResource("5_v6che")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxvbu"]
+atlas = ExtResource("6_irfrn")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7t5y"]
+atlas = ExtResource("7_i86uv")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y37p8"]
+atlas = ExtResource("8_bo52u")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tixp3"]
+atlas = ExtResource("8_bo52u")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vca3f"]
+atlas = ExtResource("9_y2k0u")
+region = Rect2(0, 0, 24, 24)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ec8yb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ns2ww")
+}],
+"loop": false,
+"name": &"atacar",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elllf")
+}],
+"loop": false,
+"name": &"caer",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iadmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjeog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgcjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sanga")
+}],
+"loop": true,
+"name": &"caminar",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opqu2")
+}],
+"loop": false,
+"name": &"dash",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1axkw")
+}],
+"loop": false,
+"name": &"doble_salto",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxvbu")
+}],
+"loop": false,
+"name": &"herido",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7t5y")
+}],
+"loop": false,
+"name": &"muerto",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y37p8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tixp3")
+}],
+"loop": true,
+"name": &"quieto",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vca3f")
+}],
+"loop": false,
+"name": &"saltar",
+"speed": 1.0
+}]
