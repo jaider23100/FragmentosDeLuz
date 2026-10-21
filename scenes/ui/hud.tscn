@@ -1,0 +1,112 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_hud"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/corazon.png" id="2_corazon"]
+[ext_resource type="Texture2D" path="res://assets/sprites/objetos/fragmento.png" id="3_fragmento"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_corazon"]
+atlas = ExtResource("2_corazon")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fragmento"]
+atlas = ExtResource("3_fragmento")
+region = Rect2(0, 0, 8, 8)
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="Corazones" type="HBoxContainer" parent="."]
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_constants/separation = 2
+
+[node name="Corazon1" type="TextureRect" parent="Corazones"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_corazon")
+
+[node name="Corazon2" type="TextureRect" parent="Corazones"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_corazon")
+
+[node name="Corazon3" type="TextureRect" parent="Corazones"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_corazon")
+
+[node name="Fragmentos" type="HBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -18.0
+offset_top = 5.0
+offset_right = 18.0
+offset_bottom = 15.0
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="IconoFragmento" type="TextureRect" parent="Fragmentos"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_fragmento")
+stretch_mode = 5
+
+[node name="EtiquetaFragmentos" type="Label" parent="Fragmentos"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.373, 0.953, 1, 1)
+text = "0/5"
+
+[node name="EtiquetaPuntos" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -76.0
+offset_top = 5.0
+offset_right = -6.0
+offset_bottom = 15.0
+theme_override_colors/font_color = Color(0.957, 0.945, 0.91, 1)
+text = "0 pts"
+horizontal_alignment = 2
+
+[node name="Mensaje" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -30.0
+offset_right = 100.0
+offset_bottom = -18.0
+theme_override_colors/font_color = Color(0.949, 0.757, 0.306, 1)
+theme_override_colors/font_outline_color = Color(0.102, 0.102, 0.141, 1)
+theme_override_constants/outline_size = 4
+horizontal_alignment = 1
+
+[node name="TextoCartel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.0
+offset_top = 20.0
+offset_right = 130.0
+offset_bottom = 56.0
+
+[node name="EtiquetaCartel" type="Label" parent="TextoCartel"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.957, 0.945, 0.91, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TimerMensaje" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="TimerMensaje" to="." method="_on_timer_mensaje_timeout"]

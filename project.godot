@@ -76,6 +76,10 @@ pausa={
 
 enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 
+[gui]
+
+theme/custom="res://assets/ui/tema.tres"
+
 [layer_names]
 
 2d_physics/layer_1="mundo"
