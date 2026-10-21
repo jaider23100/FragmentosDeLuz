@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/objetos/roca.gd" id="1_roca"]
+[ext_resource type="Texture2D" path="res://assets/sprites/objetos/roca.png" id="2_textura"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_roca"]
+friction = 0.8
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cuerpo"]
+size = Vector2(22, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_empuje"]
+size = Vector2(32, 16)
+
+[node name="Roca" type="RigidBody2D"]
+collision_layer = 64
+collision_mask = 65
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_roca")
+lock_rotation = true
+script = ExtResource("1_roca")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+texture = ExtResource("2_textura")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cuerpo")
+
+[node name="AreaEmpuje" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaEmpuje"]
+shape = SubResource("RectangleShape2D_empuje")
+
+[connection signal="body_entered" from="AreaEmpuje" to="." method="_on_area_empuje_body_entered"]
+[connection signal="body_exited" from="AreaEmpuje" to="." method="_on_area_empuje_body_exited"]
