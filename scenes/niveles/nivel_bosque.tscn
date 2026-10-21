@@ -1,0 +1,201 @@
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://scripts/niveles/nivel_bosque.gd" id="1_nivel"]
+[ext_resource type="PackedScene" path="res://scenes/jugador/caballero.tscn" id="2_caballero"]
+[ext_resource type="PackedScene" path="res://scenes/enemigos/slime.tscn" id="3_slime"]
+[ext_resource type="PackedScene" path="res://scenes/objetos/checkpoint.tscn" id="4_checkpoint"]
+
+[sub_resource type="RectangleShape2D" id="Forma_SueloZona1"]
+size = Vector2(760, 80)
+
+[sub_resource type="RectangleShape2D" id="Forma_SueloZona2a4"]
+size = Vector2(2392, 80)
+
+[sub_resource type="RectangleShape2D" id="Forma_SueloZona5"]
+size = Vector2(500, 80)
+
+[sub_resource type="RectangleShape2D" id="Forma_ParedIzquierda"]
+size = Vector2(16, 480)
+
+[sub_resource type="RectangleShape2D" id="Forma_ParedDerecha"]
+size = Vector2(16, 480)
+
+[sub_resource type="RectangleShape2D" id="Forma_PlataformaF1"]
+size = Vector2(64, 12)
+
+[sub_resource type="RectangleShape2D" id="Forma_CornisaF2"]
+size = Vector2(48, 12)
+
+[sub_resource type="RectangleShape2D" id="Forma_PlataformaAltaZona3"]
+size = Vector2(160, 12)
+
+[sub_resource type="RectangleShape2D" id="Forma_CornisaF4"]
+size = Vector2(80, 12)
+
+[node name="NivelBosque" type="Node2D"]
+script = ExtResource("1_nivel")
+
+[node name="Fondo" type="ColorRect" parent="."]
+z_index = -10
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 4100.0
+offset_bottom = 700.0
+mouse_filter = 2
+color = Color(0.18, 0.231, 0.196, 1)
+
+[node name="Mundo" type="Node2D" parent="."]
+
+[node name="SueloZona1" type="StaticBody2D" parent="Mundo"]
+position = Vector2(0, 400)
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="Mundo/SueloZona1"]
+offset_right = 760.0
+offset_bottom = 80.0
+mouse_filter = 2
+color = Color(0.29, 0.231, 0.173, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mundo/SueloZona1"]
+position = Vector2(380.0, 40.0)
+shape = SubResource("Forma_SueloZona1")
+
+[node name="SueloZona2a4" type="StaticBody2D" parent="Mundo"]
+position = Vector2(808, 400)
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="Mundo/SueloZona2a4"]
+offset_right = 2392.0
+offset_bottom = 80.0
+mouse_filter = 2
+color = Color(0.29, 0.231, 0.173, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mundo/SueloZona2a4"]
+position = Vector2(1196.0, 40.0)
+shape = SubResource("Forma_SueloZona2a4")
+
+[node name="SueloZona5" type="StaticBody2D" parent="Mundo"]
+position = Vector2(3340, 400)
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="Mundo/SueloZona5"]
+offset_right = 500.0
+offset_bottom = 80.0
+mouse_filter = 2
+color = Color(0.29, 0.231, 0.173, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mundo/SueloZona5"]
+position = Vector2(250.0, 40.0)
+shape = SubResource("Forma_SueloZona5")
+
+[node name="ParedIzquierda" type="StaticBody2D" parent="Mundo"]
+position = Vector2(-16, 0)
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="Mundo/ParedIzquierda"]
+offset_right = 16.0
+offset_bottom = 480.0
+mouse_filter = 2
+color = Color(0.29, 0.231, 0.173, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mundo/ParedIzquierda"]
+position = Vector2(8.0, 240.0)
+shape = SubResource("Forma_ParedIzquierda")
+
+[node name="ParedDerecha" type="StaticBody2D" parent="Mundo"]
+position = Vector2(3840, 0)
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="Mundo/ParedDerecha"]
+offset_right = 16.0
+offset_bottom = 480.0
+mouse_filter = 2
+color = Color(0.29, 0.231, 0.173, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mundo/ParedDerecha"]
+position = Vector2(8.0, 240.0)
+shape = SubResource("Forma_ParedDerecha")
+
+[node name="PlataformaF1" type="StaticBody2D" parent="Mundo"]
+position = Vector2(420, 366)
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="Mundo/PlataformaF1"]
+offset_right = 64.0
+offset_bottom = 12.0
+mouse_filter = 2
+color = Color(0.29, 0.231, 0.173, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mundo/PlataformaF1"]
+position = Vector2(32.0, 6.0)
+shape = SubResource("Forma_PlataformaF1")
+
+[node name="CornisaF2" type="StaticBody2D" parent="Mundo"]
+position = Vector2(1100, 340)
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="Mundo/CornisaF2"]
+offset_right = 48.0
+offset_bottom = 12.0
+mouse_filter = 2
+color = Color(0.29, 0.231, 0.173, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mundo/CornisaF2"]
+position = Vector2(24.0, 6.0)
+shape = SubResource("Forma_CornisaF2")
+
+[node name="PlataformaAltaZona3" type="StaticBody2D" parent="Mundo"]
+position = Vector2(1840, 180)
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="Mundo/PlataformaAltaZona3"]
+offset_right = 160.0
+offset_bottom = 12.0
+mouse_filter = 2
+color = Color(0.29, 0.231, 0.173, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mundo/PlataformaAltaZona3"]
+position = Vector2(80.0, 6.0)
+shape = SubResource("Forma_PlataformaAltaZona3")
+
+[node name="CornisaF4" type="StaticBody2D" parent="Mundo"]
+position = Vector2(2650, 310)
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="Mundo/CornisaF4"]
+offset_right = 80.0
+offset_bottom = 12.0
+mouse_filter = 2
+color = Color(0.29, 0.231, 0.173, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mundo/CornisaF4"]
+position = Vector2(40.0, 6.0)
+shape = SubResource("Forma_CornisaF4")
+
+[node name="Enemigos" type="Node2D" parent="."]
+
+[node name="Objetos" type="Node2D" parent="."]
+
+[node name="PosicionInicio" type="Marker2D" parent="."]
+position = Vector2(40, 392)
+
+[node name="Slime1" parent="Enemigos" instance=ExtResource("3_slime")]
+position = Vector2(250, 396)
+
+[node name="Slime2" parent="Enemigos" instance=ExtResource("3_slime")]
+position = Vector2(560, 396)
+
+[node name="Slime3" parent="Enemigos" instance=ExtResource("3_slime")]
+position = Vector2(1250, 396)
+
+[node name="Slime4" parent="Enemigos" instance=ExtResource("3_slime")]
+position = Vector2(2450, 396)
+
+[node name="Checkpoint1" parent="Objetos" instance=ExtResource("4_checkpoint")]
+position = Vector2(1450, 393)
+
+[node name="Checkpoint2" parent="Objetos" instance=ExtResource("4_checkpoint")]
+position = Vector2(2950, 393)
+
+[node name="Caballero" parent="." instance=ExtResource("2_caballero")]
+position = Vector2(40, 392)
