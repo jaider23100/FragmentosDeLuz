@@ -13,6 +13,7 @@ var estado: Estado = Estado.PATRULLANDO
 ## 1 si avanza a la derecha, -1 si avanza a la izquierda.
 var direccion: int = -1
 
+@onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _raycast_pared: RayCast2D = $RayCastPared
 @onready var _raycast_borde: RayCast2D = $RayCastBorde
 
@@ -51,6 +52,7 @@ func _debe_girar() -> bool:
 
 
 func _orientar_raycasts() -> void:
+	_sprite.flip_h = direccion > 0
 	_raycast_pared.target_position = Vector2(direccion * 8.0, 0.0)
 	_raycast_borde.position = Vector2(direccion * 7.0, 0.0)
 	_raycast_pared.force_raycast_update()
