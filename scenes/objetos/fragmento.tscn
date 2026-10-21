@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/objetos/fragmento.gd" id="1_fragmento"]
+[ext_resource type="Texture2D" path="res://assets/sprites/objetos/fragmento.png" id="2_textura"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_area"]
+size = Vector2(10, 10)
+
+[node name="Fragmento" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_fragmento")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_textura")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_area")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
