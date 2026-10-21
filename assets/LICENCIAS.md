@@ -4,4 +4,5 @@ Cada recurso de terceros se registra aquí al momento de agregarlo al proyecto (
 
 | Recurso (ruta) | Tipo | Autor | Fuente (URL) | Licencia | Atribución |
 |---|---|---|---|---|---|
+| `addons/gut/` (GUT 9.5.0) | Complemento de pruebas | Butch Wesley (bitwes) | https://github.com/bitwes/Gut | MIT (`addons/gut/LICENSE.md`) | Licencia incluida en la carpeta |
 | Godot Engine 4.5 | Motor | Juan Linietsky, Ariel Manzur y colaboradores | https://godotengine.org/license | MIT | Aviso en la pantalla de créditos |
