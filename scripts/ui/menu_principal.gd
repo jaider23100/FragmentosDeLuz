@@ -1,0 +1,18 @@
+class_name MenuPrincipal
+extends Control
+## Menú principal: iniciar partida, opciones, créditos y salir (RF-18).
+
+@onready var _boton_jugar: Button = %BotonJugar
+
+
+func _ready() -> void:
+	EstadoJuego.cambiar_fase(EstadoJuego.Fase.MENU)
+	_boton_jugar.grab_focus()
+
+
+func _on_boton_jugar_pressed() -> void:
+	GestorEscenas.iniciar_partida()
+
+
+func _on_boton_salir_pressed() -> void:
+	get_tree().quit()

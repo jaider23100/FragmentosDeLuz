@@ -12,12 +12,14 @@ config_version=5
 
 config/name="Fragmentos de Luz"
 config/version="0.0.0"
+run/main_scene="res://scenes/ui/menu_principal.tscn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 EstadoJuego="*res://scripts/autoload/estado_juego.gd"
+GestorEscenas="*res://scripts/autoload/gestor_escenas.gd"
 
 [debug]
 
