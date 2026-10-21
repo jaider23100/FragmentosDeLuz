@@ -25,7 +25,16 @@ Godot **4.5-stable** (renderizador Compatibility). Las plantillas de exportació
 
 ## Cómo ejecutar las pruebas
 
-*Pendiente: se completa al instalar GUT 9.5.0 (HU-07).*
+Las pruebas unitarias usan **GUT 9.5.0** (`addons/gut/`) y están en `test/unit/`.
+
+- **Desde el editor:** panel inferior **GUT** → *Run All*.
+- **Por línea de comandos** (desde la carpeta del proyecto, en Windows):
+
+```bash
+"D:\Godot\Godot_v4.5-stable_win64_console.exe" --headless --path . -s addons/gut/gut_cmdln.gd -d -gdir=res://test/unit -gexit -gjunit_xml_file=res://docs/reporte_gut.xml
+```
+
+El reporte JUnit XML queda en `docs/reporte_gut.xml`.
 
 ## Release
 
