@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemigos/murcielago.gd" id="1_murcielago"]
+[ext_resource type="SpriteFrames" path="res://assets/sprites/enemigos/murcielago/murcielago_frames.tres" id="2_frames"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cuerpo"]
+size = Vector2(12, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dano"]
+size = Vector2(12, 8)
+
+[node name="Murcielago" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 1
+motion_mode = 1
+script = ExtResource("1_murcielago")
+vida_maxima = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_frames")
+animation = &"dormido"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cuerpo")
+
+[node name="AreaDano" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDano"]
+shape = SubResource("RectangleShape2D_dano")
+
+[connection signal="body_entered" from="AreaDano" to="." method="_on_area_dano_body_entered"]
+[connection signal="body_exited" from="AreaDano" to="." method="_on_area_dano_body_exited"]
