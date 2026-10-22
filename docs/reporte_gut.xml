@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="GutTests" failures="0" tests="42" >
+  <testsuite name="test/unit/test_caballero.gd" tests="8" failures="0" skipped="0" time="1.489062" >
+      <testcase name="test_doble_salto_solo_una_vez_en_el_aire" assertions="4" status="pass" classname="test/unit/test_caballero.gd" time="0.090756" >
+      </testcase>
+      <testcase name="test_dash_en_el_aire_solo_una_vez_por_salto" assertions="4" status="pass" classname="test/unit/test_caballero.gd" time="0.770541" >
+      </testcase>
+      <testcase name="test_dash_bloqueado_durante_el_enfriamiento" assertions="2" status="pass" classname="test/unit/test_caballero.gd" time="0.027664" >
+      </testcase>
+      <testcase name="test_ataque_bloqueado_durante_el_enfriamiento" assertions="4" status="pass" classname="test/unit/test_caballero.gd" time="0.413961" >
+      </testcase>
+      <testcase name="test_dano_pasa_a_herido_con_retroceso" assertions="3" status="pass" classname="test/unit/test_caballero.gd" time="0.034609" >
+      </testcase>
+      <testcase name="test_dano_durante_invulnerabilidad_no_resta" assertions="1" status="pass" classname="test/unit/test_caballero.gd" time="0.034438" >
+      </testcase>
+      <testcase name="test_dano_mortal_pasa_a_muerto" assertions="2" status="pass" classname="test/unit/test_caballero.gd" time="0.034554" >
+      </testcase>
+      <testcase name="test_dash_avanza_sin_gravedad_hacia_donde_mira" assertions="1" status="pass" classname="test/unit/test_caballero.gd" time="0.082539" >
+      </testcase>
+      </testsuite>
+  <testsuite name="test/unit/test_creditos.gd" tests="2" failures="0" skipped="0" time="0.979521" >
+      <testcase name="test_creditos_muestran_equipo_licencias_y_aviso_de_godot" assertions="7" status="pass" classname="test/unit/test_creditos.gd" time="0.001092" >
+      </testcase>
+      <testcase name="test_el_texto_sube_solo" assertions="1" status="pass" classname="test/unit/test_creditos.gd" time="0.978429" >
+      </testcase>
+      </testsuite>
+  <testsuite name="test/unit/test_enemigos_y_fisica.gd" tests="3" failures="0" skipped="0" time="0.108805" >
+      <testcase name="test_slime_muere_con_un_golpe_y_suma_50_puntos" assertions="3" status="pass" classname="test/unit/test_enemigos_y_fisica.gd" time="0.104554" >
+      </testcase>
+      <testcase name="test_enemigo_con_dos_de_vida_resiste_el_primer_golpe" assertions="2" status="pass" classname="test/unit/test_enemigos_y_fisica.gd" time="0.001008" >
+      </testcase>
+      <testcase name="test_viento_aplica_y_quita_su_fuerza_al_caballero" assertions="3" status="pass" classname="test/unit/test_enemigos_y_fisica.gd" time="0.003243" >
+      </testcase>
+      </testsuite>
+  <testsuite name="test/unit/test_estado_juego.gd" tests="13" failures="0" skipped="0" time="0.003112" >
+      <testcase name="test_inicia_con_3_corazones_0_puntos_y_0_fragmentos" assertions="3" status="pass" classname="test/unit/test_estado_juego.gd" time="0.000348" >
+      </testcase>
+      <testcase name="test_recibir_dano_resta_un_corazon" assertions="2" status="pass" classname="test/unit/test_estado_juego.gd" time="0.00024" >
+      </testcase>
+      <testcase name="test_corazones_nunca_bajan_de_cero" assertions="1" status="pass" classname="test/unit/test_estado_juego.gd" time="0.000192" >
+      </testcase>
+      <testcase name="test_invulnerabilidad_bloquea_dano_durante_un_segundo" assertions="2" status="pass" classname="test/unit/test_estado_juego.gd" time="0.000179" >
+      </testcase>
+      <testcase name="test_invulnerabilidad_termina_despues_de_un_segundo" assertions="1" status="pass" classname="test/unit/test_estado_juego.gd" time="0.000164" >
+      </testcase>
+      <testcase name="test_caida_ignora_invulnerabilidad_y_usa_checkpoint" assertions="2" status="pass" classname="test/unit/test_estado_juego.gd" time="0.000214" >
+      </testcase>
+      <testcase name="test_sin_checkpoint_reaparece_en_el_inicio" assertions="1" status="pass" classname="test/unit/test_estado_juego.gd" time="0.000202" >
+      </testcase>
+      <testcase name="test_puntaje_de_fragmentos_monedas_y_enemigos" assertions="2" status="pass" classname="test/unit/test_estado_juego.gd" time="0.000181" >
+      </testcase>
+      <testcase name="test_mensaje_de_fragmentos_faltantes_en_singular_y_plural" assertions="2" status="pass" classname="test/unit/test_estado_juego.gd" time="0.000181" >
+      </testcase>
+      <testcase name="test_solo_gana_con_los_5_fragmentos" assertions="3" status="pass" classname="test/unit/test_estado_juego.gd" time="0.000144" >
+      </testcase>
+      <testcase name="test_derrota_al_llegar_a_cero_corazones" assertions="2" status="pass" classname="test/unit/test_estado_juego.gd" time="0.000471" >
+      </testcase>
+      <testcase name="test_puntaje_final_suma_bono_por_corazones" assertions="2" status="pass" classname="test/unit/test_estado_juego.gd" time="0.000433" >
+      </testcase>
+      <testcase name="test_reiniciar_restaura_el_estado_inicial" assertions="4" status="pass" classname="test/unit/test_estado_juego.gd" time="0.000163" >
+      </testcase>
+      </testsuite>
+  <testsuite name="test/unit/test_gestor_guardado.gd" tests="5" failures="0" skipped="0" time="0.040749" >
+      <testcase name="test_sin_archivo_usa_valores_por_defecto" assertions="2" status="pass" classname="test/unit/test_gestor_guardado.gd" time="0.002092" >
+      </testcase>
+      <testcase name="test_archivo_danado_usa_valores_por_defecto_sin_fallar" assertions="4" status="pass" classname="test/unit/test_gestor_guardado.gd" time="0.020194" >
+      </testcase>
+      <testcase name="test_volumen_fuera_de_rango_se_ajusta" assertions="3" status="pass" classname="test/unit/test_gestor_guardado.gd" time="0.00803" >
+      </testcase>
+      <testcase name="test_guardar_y_recargar_conserva_los_valores" assertions="3" status="pass" classname="test/unit/test_gestor_guardado.gd" time="0.00497" >
+      </testcase>
+      <testcase name="test_mejor_puntaje_solo_cambia_si_es_estrictamente_mayor" assertions="5" status="pass" classname="test/unit/test_gestor_guardado.gd" time="0.005463" >
+      </testcase>
+      </testsuite>
+  <testsuite name="test/unit/test_historia_y_santuario.gd" tests="3" failures="0" skipped="0" time="0.012037" >
+      <testcase name="test_santuario_no_se_restaura_con_fragmentos_faltantes" assertions="2" status="pass" classname="test/unit/test_historia_y_santuario.gd" time="0.002132" >
+      </testcase>
+      <testcase name="test_santuario_completa_el_nivel_con_los_cinco_fragmentos" assertions="3" status="pass" classname="test/unit/test_historia_y_santuario.gd" time="0.00147" >
+      </testcase>
+      <testcase name="test_la_introduccion_tiene_cuatro_pantallas_y_avanza" assertions="2" status="pass" classname="test/unit/test_historia_y_santuario.gd" time="0.008435" >
+      </testcase>
+      </testsuite>
+  <testsuite name="test/unit/test_interfaz.gd" tests="3" failures="0" skipped="0" time="0.004839" >
+      <testcase name="test_hud_se_actualiza_al_recoger_un_fragmento" assertions="2" status="pass" classname="test/unit/test_interfaz.gd" time="0.001347" >
+      </testcase>
+      <testcase name="test_hud_muestra_corazon_vacio_al_recibir_dano" assertions="1" status="pass" classname="test/unit/test_interfaz.gd" time="0.000683" >
+      </testcase>
+      <testcase name="test_pausa_detiene_y_reanuda_el_juego" assertions="4" status="pass" classname="test/unit/test_interfaz.gd" time="0.002809" >
+      </testcase>
+      </testsuite>
+  <testsuite name="test/unit/test_murcielago.gd" tests="3" failures="0" skipped="0" time="0.001437" >
+      <testcase name="test_despierta_y_persigue_cuando_el_caballero_se_acerca" assertions="2" status="pass" classname="test/unit/test_murcielago.gd" time="0.000704" >
+      </testcase>
+      <testcase name="test_regresa_cuando_el_caballero_se_aleja_y_vuelve_a_dormir" assertions="2" status="pass" classname="test/unit/test_murcielago.gd" time="0.000356" >
+      </testcase>
+      <testcase name="test_muere_con_dos_golpes" assertions="3" status="pass" classname="test/unit/test_murcielago.gd" time="0.000377" >
+      </testcase>
+      </testsuite>
+  <testsuite name="test/unit/test_pantallas.gd" tests="2" failures="0" skipped="0" time="0.006733" >
+      <testcase name="test_victoria_muestra_el_puntaje_final_con_bono" assertions="2" status="pass" classname="test/unit/test_pantallas.gd" time="0.00497" >
+      </testcase>
+      <testcase name="test_opciones_silencia_la_musica_sin_afectar_los_efectos" assertions="2" status="pass" classname="test/unit/test_pantallas.gd" time="0.001763" >
+      </testcase>
+      </testsuite>
+  </testsuites>
