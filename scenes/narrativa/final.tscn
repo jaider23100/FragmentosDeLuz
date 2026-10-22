@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/narrativa/pantalla_narrativa.gd" id="1_narrativa"]
+[ext_resource type="Texture2D" path="res://assets/sprites/narrativa/ilustracion_final.png" id="2_ilustracion"]
+
+[node name="Final" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_narrativa")
+textos = Array[String](["Sir Aldric colocó el último fragmento en el altar del santuario.", "El Cristal de Luz brilló de nuevo y su resplandor devolvió la vida al Bosque Marchito.", "Valdoria está a salvo... por ahora. En algún lugar de la sombra, Morvak sigue esperando."])
+escena_siguiente = "res://scenes/ui/victoria.tscn"
+
+[node name="Fondo" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.102, 0.102, 0.141, 1)
+
+[node name="Ilustracion" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 110.0
+grow_horizontal = 2
+texture = ExtResource("2_ilustracion")
+stretch_mode = 5
+
+[node name="EtiquetaTexto" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -66.0
+offset_right = -12.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.957, 0.945, 0.91, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Indicador" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -14.0
+offset_right = -6.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.55, 0.6, 0.57, 1)
+horizontal_alignment = 2
