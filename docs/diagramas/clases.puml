@@ -1,0 +1,217 @@
+@startuml clases_autoloads
+title Diagrama de clases (1 de 2): autoloads
+skinparam classAttributeIconSize 0
+skinparam class {
+  BackgroundColor #F4F1E8
+  BorderColor #4A3B2C
+}
+hide empty members
+
+class Node
+
+class EstadoJuego <<autoload>> {
+  +corazones: int
+  +puntos: int
+  +fragmentos: int
+  +tiempo_invulnerable: float
+  +posicion_checkpoint: Vector2
+  +hay_checkpoint: bool
+  +fase: Fase
+  +reiniciar()
+  +recibir_dano(forzar: bool): bool
+  +esta_invulnerable(): bool
+  +avanzar_tiempo(delta: float)
+  +recoger_fragmento()
+  +registrar_moneda()
+  +registrar_enemigo_derrotado()
+  +activar_checkpoint(pos: Vector2)
+  +obtener_punto_reaparicion(inicio: Vector2): Vector2
+  +puede_ganar(): bool
+  +mensaje_faltantes(): String
+  +calcular_puntaje_final(): int
+  +completar_nivel(): int
+  +cambiar_fase(nueva: Fase)
+  .. «signal» ..
+  corazones_cambiados(corazones: int)
+  puntos_cambiados(puntos: int)
+  fragmentos_cambiados(fragmentos: int)
+  jugador_murio()
+  nivel_completado(puntaje_final: int)
+  fase_cambiada(fase: Fase)
+}
+class GestorEscenas <<autoload>> {
+  +MENU, INTRO, NIVEL, FINAL, VICTORIA, DERROTA, CREDITOS: String
+  +cambiar_escena(ruta: String)
+  +iniciar_partida()
+}
+class GestorGuardado <<autoload>> {
+  +ruta: String
+  +mejor_puntaje: int
+  +volumen_musica: float
+  +volumen_efectos: float
+  +cargar()
+  +guardar(): Error
+  +registrar_puntaje(puntaje: int): bool
+  +guardar_volumen(musica: float, efectos: float)
+}
+class GestorAudio <<autoload>> {
+  +reproducir_musica(pista: String)
+  +reproducir_efecto(nombre: String)
+  +aplicar_volumen(bus: String, valor: float)
+  +obtener_volumen(bus: String): float
+}
+enum Fase {
+  MENU
+  JUGANDO
+  PAUSA
+  VICTORIA
+  DERROTA
+}
+
+Node <|-- EstadoJuego
+Node <|-- GestorEscenas
+Node <|-- GestorGuardado
+Node <|-- GestorAudio
+EstadoJuego +-- Fase
+GestorEscenas ..> EstadoJuego : reiniciar()
+GestorAudio ..> EstadoJuego : «escucha fase_cambiada»
+GestorAudio ..> GestorGuardado : volumen inicial
+@enduml
+
+@startuml clases_escenas
+title Diagrama de clases (2 de 2): clases de escena
+skinparam classAttributeIconSize 0
+skinparam class {
+  BackgroundColor #F4F1E8
+  BorderColor #4A3B2C
+}
+hide empty members
+left to right direction
+
+package "Tipos de nodo de Godot" {
+  class CharacterBody2D
+  class Area2D
+  class RigidBody2D
+  class Node2D
+  class CanvasLayer
+  class Control
+  class PanelContainer
+}
+
+class Caballero {
+  +velocidad: float
+  +velocidad_doble_salto: float
+  +velocidad_dash: float
+  +estado: Estado
+  +saltos_aereos_restantes: int
+  +puede_dash: bool
+  +direccion: int
+  +saltar(): bool
+  +doble_salto(): bool
+  +dash(): bool
+  +atacar(): bool
+  +recibir_dano()
+  +reaparecer(pos: Vector2)
+  +aplicar_viento(fuerza: float)
+  +quitar_viento()
+  +cambiar_estado(nuevo: Estado)
+}
+class Enemigo {
+  +vida_maxima: int
+  +vida: int
+  +recibir_golpe()
+  +morir()
+}
+class Slime {
+  +velocidad: float
+  #_patrullar(delta: float)
+  #_debe_girar(): bool
+}
+class Murcielago {
+  +radio_deteccion: float
+  +radio_abandono: float
+  +evaluar_estado(dc: float, do: float): Estado
+}
+class Coleccionable {
+  #_al_recoger()
+}
+class Fragmento
+class Moneda
+class Checkpoint {
+  +activar()
+}
+class Cartel {
+  +texto: String
+  +mostrar()
+  +ocultar()
+}
+class Santuario {
+  +intentar_restaurar(): bool
+}
+class Viento {
+  +fuerza: float
+}
+class Puas
+class Roca {
+  +fuerza_empuje: float
+  +velocidad_maxima: float
+}
+class NivelBosque {
+  +limite_caida_y: float
+}
+class Hud {
+  +mostrar_mensaje(texto: String)
+  +mostrar_texto_cartel(texto: String)
+  +ocultar_texto_cartel()
+}
+class MenuPausa {
+  +pausar()
+  +reanudar()
+}
+class Opciones {
+  +abrir()
+  .. «signal» ..
+  cerrado()
+}
+class PantallaNarrativa {
+  +textos: Array[String]
+  +escena_siguiente: String
+  +avanzar()
+  +saltar()
+}
+class MenuPrincipal
+class Victoria
+class Derrota
+class Creditos
+
+CharacterBody2D <|-- Caballero
+CharacterBody2D <|-- Enemigo
+Enemigo <|-- Slime
+Enemigo <|-- Murcielago
+Area2D <|-- Coleccionable
+Coleccionable <|-- Fragmento
+Coleccionable <|-- Moneda
+Area2D <|-- Checkpoint
+Area2D <|-- Cartel
+Area2D <|-- Santuario
+Area2D <|-- Viento
+Area2D <|-- Puas
+RigidBody2D <|-- Roca
+Node2D <|-- NivelBosque
+CanvasLayer <|-- Hud
+CanvasLayer <|-- MenuPausa
+PanelContainer <|-- Opciones
+Control <|-- PantallaNarrativa
+Control <|-- MenuPrincipal
+Control <|-- Victoria
+Control <|-- Derrota
+Control <|-- Creditos
+
+NivelBosque *-- Caballero
+NivelBosque *-- "7" Enemigo
+NivelBosque *-- "*" Coleccionable
+NivelBosque *-- Hud
+NivelBosque *-- MenuPausa
+MenuPrincipal *-- Opciones
+MenuPausa *-- Opciones
+@enduml

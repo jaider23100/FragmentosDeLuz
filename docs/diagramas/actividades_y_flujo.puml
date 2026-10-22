@@ -1,0 +1,122 @@
+@startuml actividades_core_loop
+title Diagrama de actividades: ciclo central de juego de Fragmentos de Luz
+|Jugador|
+start
+:Iniciar partida (introducción);
+repeat
+  :Explorar el Bosque Marchito;
+  if (¿Hay un peligro?) then (enemigo)
+    if (¿Atacar?) then (sí)
+      :Golpe de espada;
+      |EstadoJuego|
+      :El enemigo pierde vida;
+      if (¿vida = 0?) then (sí)
+        :Sumar 50 puntos;
+      endif
+      |Jugador|
+    else (esquivar)
+      :Saltar, doble salto o impulso;
+    endif
+  elseif (hueco o altura)
+    :Usar salto, doble salto, impulso, viento o roca;
+  elseif (púas o vacío)
+    |EstadoJuego|
+    :Restar 1 corazón;
+    if (¿corazones = 0?) then (sí)
+      :Derrota;
+      stop
+    else (no)
+      :Continuar o reaparecer en el punto de control;
+    endif
+    |Jugador|
+  else (ninguno)
+  endif
+  if (¿Hay un objeto?) then (fragmento)
+    |EstadoJuego|
+    :+1 fragmento, +100 puntos;
+    |Jugador|
+  elseif (moneda)
+    |EstadoJuego|
+    :+10 puntos;
+    |Jugador|
+  elseif (punto de control)
+    :Activar el estandarte;
+  else (no)
+  endif
+repeat while (¿Llegó al santuario con 5/5?) is (no) not (sí)
+|EstadoJuego|
+:Calcular el puntaje final (+100 por corazón);
+:Guardar si es récord;
+|Jugador|
+:Ver la cinemática final y la victoria;
+stop
+@enduml
+
+@startuml flujo_pantallas
+title Flujo de pantallas
+[*] --> MenuPrincipal
+MenuPrincipal --> Intro : Jugar
+MenuPrincipal --> Opciones : Opciones
+Opciones --> MenuPrincipal : Volver
+MenuPrincipal --> Creditos : Créditos
+Creditos --> MenuPrincipal : Volver
+MenuPrincipal --> [*] : Salir
+Intro --> NivelBosque : terminar las 4 pantallas o Esc
+NivelBosque --> MenuPausa : Esc
+MenuPausa --> NivelBosque : Continuar o Esc
+MenuPausa --> NivelBosque : Reiniciar nivel
+MenuPausa --> MenuPrincipal : Salir al menú
+NivelBosque --> Derrota : corazones = 0
+Derrota --> NivelBosque : Reintentar
+Derrota --> MenuPrincipal : Menú principal
+NivelBosque --> Final : santuario con 5/5
+Final --> Victoria : terminar las 3 pantallas o Esc
+Victoria --> Intro : Jugar de nuevo
+Victoria --> MenuPrincipal : Menú principal
+@enduml
+
+@startuml escenas
+title Diagrama de escenas: qué escena instancia a cuál
+left to right direction
+skinparam componentStyle rectangle
+skinparam component {
+  BackgroundColor #F4F1E8
+  BorderColor #4A3B2C
+}
+component "nivel_bosque.tscn" as N
+component "menu_principal.tscn" as M
+component "menu_pausa.tscn" as P
+component "opciones.tscn" as O
+component "caballero.tscn" as C
+component "slime.tscn" as S
+component "murcielago.tscn" as B
+component "fragmento.tscn" as F
+component "moneda.tscn" as MO
+component "checkpoint.tscn" as CP
+component "cartel.tscn" as CA
+component "roca.tscn" as R
+component "viento.tscn" as V
+component "puas.tscn" as PU
+component "santuario.tscn" as SA
+component "hud.tscn" as H
+component "intro.tscn" as I
+component "final.tscn" as FI
+component "pantalla_narrativa.gd" as PN
+N --> C : instancia
+N --> S : instancia x4
+N --> B : instancia x3
+N --> F : instancia x5
+N --> MO : instancia x20
+N --> CP : instancia x2
+N --> CA : instancia x3
+N --> R : instancia
+N --> V : instancia
+N --> PU : instancia x7
+N --> SA : instancia
+N --> H : instancia
+N --> P : instancia
+M --> O : instancia
+P --> O : instancia
+I ..> PN : script
+FI ..> PN : script
+@enduml
