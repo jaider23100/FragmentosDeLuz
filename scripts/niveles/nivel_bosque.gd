@@ -2,6 +2,9 @@ class_name NivelBosque
 extends Node2D
 ## Nivel del Bosque Marchito: inicia la partida, controla la caída al vacío y la reaparición.
 
+## Segundos de espera antes de cambiar a la pantalla de derrota o al final.
+const PAUSA_ANTES_DE_PANTALLA: float = 1.2
+
 ## Coordenada Y a partir de la cual el caballero cayó al vacío, en px.
 @export var limite_caida_y: float = 520.0
 ## Zona visible del nivel; la cámara del caballero no sale de este rectángulo, en px.
@@ -23,6 +26,7 @@ func _ready() -> void:
 	EstadoJuego.reiniciar()
 	EstadoJuego.cambiar_fase(EstadoJuego.Fase.JUGANDO)
 	EstadoJuego.jugador_murio.connect(_on_jugador_murio)
+	EstadoJuego.nivel_completado.connect(_on_nivel_completado)
 	_caballero.reaparecer(posicion_inicio)
 
 
@@ -43,6 +47,13 @@ func _comprobar_caida() -> void:
 		_caballero.cambiar_estado(Caballero.Estado.MUERTO)
 
 
+## Derrota (RN-07): deja ver la animación de muerte y abre la pantalla de derrota.
 func _on_jugador_murio() -> void:
-	# Sprint 1: la pantalla de derrota (HU-18) aún no existe, se reinicia el nivel.
-	GestorEscenas.cambiar_escena(GestorEscenas.NIVEL)
+	await get_tree().create_timer(PAUSA_ANTES_DE_PANTALLA).timeout
+	GestorEscenas.cambiar_escena(GestorEscenas.DERROTA)
+
+
+## Victoria (RN-06, RN-08): abre la cinemática final.
+func _on_nivel_completado(_puntaje_final: int) -> void:
+	await get_tree().create_timer(PAUSA_ANTES_DE_PANTALLA).timeout
+	GestorEscenas.cambiar_escena(GestorEscenas.FINAL)

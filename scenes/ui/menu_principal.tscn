@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/menu_principal.gd" id="1_menu"]
+[ext_resource type="PackedScene" path="res://scenes/ui/opciones.tscn" id="2_opciones"]
 
 [node name="MenuPrincipal" type="Control"]
 layout_mode = 3
@@ -51,9 +52,9 @@ theme_override_font_sizes/font_size = 8
 text = "Jugar"
 
 [node name="BotonOpciones" type="Button" parent="Contenedor"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
-disabled = true
 text = "Opciones"
 
 [node name="BotonCreditos" type="Button" parent="Contenedor"]
@@ -67,5 +68,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Salir"
 
+[node name="Opciones" parent="." instance=ExtResource("2_opciones")]
+unique_name_in_owner = true
+
 [connection signal="pressed" from="Contenedor/BotonJugar" to="." method="_on_boton_jugar_pressed"]
 [connection signal="pressed" from="Contenedor/BotonSalir" to="." method="_on_boton_salir_pressed"]
+[connection signal="pressed" from="Contenedor/BotonOpciones" to="." method="_on_boton_opciones_pressed"]
+[connection signal="cerrado" from="Opciones" to="." method="_on_opciones_cerrado"]

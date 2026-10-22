@@ -5,6 +5,9 @@ extends CanvasLayer
 ## Usa process_mode = ALWAYS para seguir recibiendo la tecla Esc mientras el árbol está en pausa.
 
 @onready var _boton_continuar: Button = %BotonContinuar
+@onready var _boton_opciones: Button = %BotonOpciones
+@onready var _contenedor: VBoxContainer = $Contenedor
+@onready var _opciones: Opciones = %Opciones
 
 
 func _ready() -> void:
@@ -14,7 +17,10 @@ func _ready() -> void:
 func _unhandled_input(evento: InputEvent) -> void:
 	if not evento.is_action_pressed("pausa"):
 		return
-	if visible:
+	if _opciones.visible:
+		_opciones.visible = false
+		_on_opciones_cerrado()
+	elif visible:
 		reanudar()
 	elif EstadoJuego.fase == EstadoJuego.Fase.JUGANDO:
 		pausar()
@@ -46,3 +52,13 @@ func _on_boton_reiniciar_pressed() -> void:
 
 func _on_boton_salir_pressed() -> void:
 	GestorEscenas.cambiar_escena(GestorEscenas.MENU)
+
+
+func _on_boton_opciones_pressed() -> void:
+	_contenedor.visible = false
+	_opciones.abrir()
+
+
+func _on_opciones_cerrado() -> void:
+	_contenedor.visible = true
+	_boton_opciones.grab_focus()
