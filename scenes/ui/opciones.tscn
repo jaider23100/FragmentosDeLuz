@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/opciones.gd" id="1_opciones"]
+
+[node name="Opciones" type="PanelContainer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -55.0
+offset_right = 90.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_opciones")
+
+[node name="Contenedor" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Titulo" type="Label" parent="Contenedor"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.373, 0.953, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Opciones"
+horizontal_alignment = 1
+
+[node name="EtiquetaMusica" type="Label" parent="Contenedor"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Música  80 %"
+
+[node name="SliderMusica" type="HSlider" parent="Contenedor"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 0.8
+
+[node name="EtiquetaEfectos" type="Label" parent="Contenedor"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Efectos  80 %"
+
+[node name="SliderEfectos" type="HSlider" parent="Contenedor"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 0.8
+
+[node name="BotonVolver" type="Button" parent="Contenedor"]
+layout_mode = 2
+text = "Volver"
+
+[connection signal="value_changed" from="Contenedor/SliderMusica" to="." method="_on_slider_musica_value_changed"]
+[connection signal="value_changed" from="Contenedor/SliderEfectos" to="." method="_on_slider_efectos_value_changed"]
+[connection signal="pressed" from="Contenedor/BotonVolver" to="." method="_on_boton_volver_pressed"]
