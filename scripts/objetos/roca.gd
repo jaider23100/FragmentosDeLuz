@@ -2,8 +2,9 @@ class_name Roca
 extends RigidBody2D
 ## Roca empujable (RigidBody2D): se mueve cuando el caballero la empuja y sirve de escalón (RF-09).
 
-## Fuerza horizontal aplicada mientras el caballero empuja, en N (unidades de Godot).
-@export var fuerza_empuje: float = 900.0
+## Fuerza horizontal aplicada mientras el caballero empuja, en N (unidades de Godot). Debe superar la fricción
+## con el suelo (0,8 × 3 × 980 ≈ 2352); con 900 la roca no se movía (DF-06).
+@export var fuerza_empuje: float = 3000.0
 ## Velocidad horizontal máxima de la roca, en px/s.
 @export var velocidad_maxima: float = 45.0
 
