@@ -5,13 +5,22 @@ const EscenaVictoria: PackedScene = preload("res://scenes/ui/victoria.tscn")
 const EscenaOpciones: PackedScene = preload("res://scenes/ui/opciones.tscn")
 
 
+const RUTA_PRUEBA: String = "user://prueba_pantallas.cfg"
+
+
 func before_each() -> void:
 	EstadoJuego.reiniciar()
+	# La victoria registra el récord: se usa un archivo de prueba para no tocar el guardado real.
+	GestorGuardado.ruta = RUTA_PRUEBA
+	GestorGuardado.mejor_puntaje = 0
 
 
 func after_each() -> void:
-	GestorAudio.aplicar_volumen("Musica", GestorAudio.VOLUMEN_POR_DEFECTO)
-	GestorAudio.aplicar_volumen("Efectos", GestorAudio.VOLUMEN_POR_DEFECTO)
+	DirAccess.remove_absolute(RUTA_PRUEBA)
+	GestorGuardado.ruta = GestorGuardado.RUTA
+	GestorGuardado.cargar()
+	GestorAudio.aplicar_volumen("Musica", GestorGuardado.volumen_musica)
+	GestorAudio.aplicar_volumen("Efectos", GestorGuardado.volumen_efectos)
 
 
 func test_victoria_muestra_el_puntaje_final_con_bono() -> void:

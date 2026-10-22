@@ -1,15 +1,17 @@
 class_name MenuPrincipal
 extends Control
-## Menú principal: iniciar partida, opciones, créditos y salir (RF-18).
+## Menú principal: iniciar partida, opciones, créditos y salir; muestra el mejor puntaje (RF-18, RF-19).
 
 @onready var _boton_jugar: Button = %BotonJugar
 @onready var _boton_opciones: Button = %BotonOpciones
+@onready var _etiqueta_mejor: Label = %EtiquetaMejor
 @onready var _contenedor: VBoxContainer = $Contenedor
 @onready var _opciones: Opciones = %Opciones
 
 
 func _ready() -> void:
 	EstadoJuego.cambiar_fase(EstadoJuego.Fase.MENU)
+	_etiqueta_mejor.text = "Mejor puntaje: %d" % GestorGuardado.mejor_puntaje
 	_boton_jugar.grab_focus()
 
 
