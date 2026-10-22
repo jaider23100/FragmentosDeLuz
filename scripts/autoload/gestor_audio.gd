@@ -4,8 +4,6 @@ extends Node
 ## La música cambia sola según la fase de EstadoJuego (señal fase_cambiada) y baja durante la pausa.
 ## Todos los botones de la interfaz suenan al presionarlos sin que cada menú lo programe.
 
-## Volumen inicial de los buses (0 a 1); GestorGuardado lo reemplaza cuando hay configuración guardada.
-const VOLUMEN_POR_DEFECTO: float = 0.8
 ## Atenuación de la música mientras el juego está en pausa, en dB.
 const ATENUACION_PAUSA_DB: float = -12.0
 ## Reproductores simultáneos de efectos.
@@ -45,8 +43,9 @@ func _ready() -> void:
 		canal.bus = &"Efectos"
 		add_child(canal)
 		_efectos.append(canal)
-	aplicar_volumen("Musica", VOLUMEN_POR_DEFECTO)
-	aplicar_volumen("Efectos", VOLUMEN_POR_DEFECTO)
+	# El volumen inicial es el guardado (GestorGuardado se carga antes que este autoload).
+	aplicar_volumen("Musica", GestorGuardado.volumen_musica)
+	aplicar_volumen("Efectos", GestorGuardado.volumen_efectos)
 	EstadoJuego.fase_cambiada.connect(_on_fase_cambiada)
 	get_tree().node_added.connect(_on_nodo_agregado)
 	reproducir_musica("menu")

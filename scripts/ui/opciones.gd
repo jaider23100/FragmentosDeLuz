@@ -39,5 +39,6 @@ func _on_slider_efectos_value_changed(valor: float) -> void:
 
 
 func _on_boton_volver_pressed() -> void:
+	GestorGuardado.guardar_volumen(_slider_musica.value, _slider_efectos.value)
 	visible = false
 	cerrado.emit()
