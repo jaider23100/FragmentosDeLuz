@@ -27,6 +27,7 @@ func recibir_golpe() -> void:
 	if vida <= 0:
 		return
 	vida -= 1
+	GestorAudio.reproducir_efecto("golpe_enemigo")
 	if vida == 0:
 		morir()
 	else:
