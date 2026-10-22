@@ -26,8 +26,7 @@ func cambiar_escena(ruta: String) -> void:
 ## Reinicia el estado de la partida y abre la primera pantalla del juego (CU-01).
 func iniciar_partida() -> void:
 	EstadoJuego.reiniciar()
-	# Sprint 1: la introducción (HU-15) aún no existe, se entra directo al nivel.
-	cambiar_escena(NIVEL)
+	cambiar_escena(INTRO)
 
 
 func _volver_al_menu(ruta_fallida: String) -> void:
