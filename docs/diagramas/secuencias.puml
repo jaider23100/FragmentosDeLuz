@@ -1,0 +1,101 @@
+@startuml ds01_dash
+title DS-01 Ejecución del impulso
+actor Jugador
+participant "Caballero" as C
+participant "TimerDash" as TD
+participant "TimerEnfriamientoDash" as TE
+participant "GestorAudio" as GA
+Jugador -> C : presiona "dash"
+C -> C : _procesar_movimiento(delta)
+C -> C : dash() [puede_dash]
+C -> C : cambiar_estado(DASH)
+C -> TD : start(duracion_dash = 0,15)
+C -> GA : reproducir_efecto("dash")
+loop cada cuadro de física
+  C -> C : velocity = (direccion * velocidad_dash, 0)\nmove_and_slide()
+end
+TD --> C : timeout
+C -> C : _on_timer_dash_timeout()\ncambiar_estado(CAYENDO o QUIETO)
+C -> TE : start(enfriamiento_dash = 0,5)
+TE --> C : timeout
+C -> C : _on_timer_enfriamiento_dash_timeout()\npuede_dash = true
+@enduml
+
+@startuml ds02_dano_derrota
+title DS-02 Daño y derrota del jugador
+participant "Puas" as P
+participant "Caballero" as C
+participant "EstadoJuego" as E
+participant "Hud" as H
+participant "NivelBosque" as N
+participant "GestorAudio" as GA
+participant "GestorEscenas" as GE
+P -> C : recibir_dano()
+C -> E : recibir_dano()
+E -> E : corazones -= 1\ntiempo_invulnerable = 1,0
+E --> H : corazones_cambiados(0)
+H -> H : _on_corazones_cambiados(0)
+E -> E : cambiar_fase(DERROTA)
+E --> GA : fase_cambiada(DERROTA)
+GA -> GA : reproducir_efecto("derrota")
+E --> N : jugador_murio()
+E --> C : true
+C -> GA : reproducir_efecto("dano")
+C -> C : cambiar_estado(MUERTO)
+N -> N : _on_jugador_murio()\nespera 1,2 s
+N -> GE : cambiar_escena(DERROTA)
+@enduml
+
+@startuml ds03_fragmento
+title DS-03 Recolección de un fragmento y actualización del HUD
+participant "Caballero" as C
+participant "Fragmento" as F
+participant "EstadoJuego" as E
+participant "Hud" as H
+participant "GestorAudio" as GA
+C -> F : body_entered(caballero)
+F -> F : _on_body_entered(body)\n_al_recoger()
+F -> E : recoger_fragmento()
+E --> H : fragmentos_cambiados(3)
+H -> H : _on_fragmentos_cambiados(3)\nanimación del contador
+E --> H : puntos_cambiados(300)
+H -> H : _on_puntos_cambiados(300)
+F -> GA : reproducir_efecto("fragmento")
+F -> F : queue_free()
+@enduml
+
+@startuml ds04_victoria
+title DS-04 Completar el nivel
+participant "Caballero" as C
+participant "Santuario" as S
+participant "EstadoJuego" as E
+participant "Hud" as H
+participant "NivelBosque" as N
+participant "GestorEscenas" as GE
+participant "Victoria" as V
+participant "GestorGuardado" as G
+C -> S : body_entered(caballero)
+S -> S : intentar_restaurar()
+S -> E : puede_ganar()
+alt faltan fragmentos
+  E --> S : false
+  S -> E : mensaje_faltantes()
+  S -> H : mostrar_mensaje("Faltan 2 fragmentos")
+else 5/5 fragmentos
+  E --> S : true
+  S -> S : frame = CUADRO_RESTAURADO
+  S -> E : completar_nivel()
+  E -> E : calcular_puntaje_final()\ncambiar_fase(VICTORIA)
+  E --> N : nivel_completado(1650)
+  N -> N : _on_nivel_completado(1650)\nespera 1,2 s
+  N -> GE : cambiar_escena(FINAL)
+  note over GE : cinemática final (3 pantallas)\ny luego cambiar_escena(VICTORIA)
+  GE -> V : _ready()
+  V -> E : calcular_puntaje_final()
+  E --> V : 1650
+  V -> G : registrar_puntaje(1650)
+  G -> G : guardar()
+  G --> V : true (nuevo récord)
+  V -> V : EtiquetaRecord.visible = true
+end
+@enduml

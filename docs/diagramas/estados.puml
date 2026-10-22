@@ -1,0 +1,71 @@
+@startuml de01_caballero
+title DE-01 Máquina de estados del Caballero (enum Estado)
+[*] --> QUIETO
+QUIETO --> CORRIENDO : mover [en el suelo]
+CORRIENDO --> QUIETO : soltar el movimiento
+QUIETO --> SALTANDO : saltar [en el suelo]
+CORRIENDO --> SALTANDO : saltar [en el suelo]
+SALTANDO --> CAYENDO : velocity.y > 0
+SALTANDO --> DOBLE_SALTO : saltar [saltos_aereos_restantes > 0]
+CAYENDO --> DOBLE_SALTO : saltar [saltos_aereos_restantes > 0]
+DOBLE_SALTO --> CAYENDO : velocity.y > 0
+CAYENDO --> QUIETO : tocar el suelo
+QUIETO --> DASH : dash [puede_dash]
+CORRIENDO --> DASH : dash [puede_dash]
+SALTANDO --> DASH : dash [puede_dash y no usado en el aire]
+CAYENDO --> DASH : dash [puede_dash y no usado en el aire]
+DASH --> CAYENDO : TimerDash.timeout [en el aire]
+DASH --> QUIETO : TimerDash.timeout [en el suelo]
+QUIETO --> ATACANDO : atacar [enfriamiento terminado]
+CORRIENDO --> ATACANDO : atacar [enfriamiento terminado]
+CAYENDO --> ATACANDO : atacar [enfriamiento terminado]
+ATACANDO --> QUIETO : TimerAtaque.timeout [en el suelo]
+ATACANDO --> CAYENDO : TimerAtaque.timeout [en el aire]
+QUIETO --> HERIDO : recibir_dano [no invulnerable y corazones > 0]
+CORRIENDO --> HERIDO : recibir_dano [no invulnerable y corazones > 0]
+CAYENDO --> HERIDO : recibir_dano [no invulnerable y corazones > 0]
+ATACANDO --> HERIDO : recibir_dano [no invulnerable y corazones > 0]
+HERIDO --> QUIETO : TimerHerido.timeout [en el suelo]
+HERIDO --> CAYENDO : TimerHerido.timeout [en el aire]
+QUIETO --> MUERTO : corazones = 0
+HERIDO --> MUERTO : corazones = 0
+CAYENDO --> MUERTO : corazones = 0
+MUERTO --> [*]
+@enduml
+
+@startuml de02_murcielago
+title DE-02 Máquina de estados del Murciélago (enum Estado)
+[*] --> DORMIDO
+DORMIDO --> PERSIGUIENDO : [distancia al caballero < radio_deteccion (80 px)]
+PERSIGUIENDO --> REGRESANDO : [distancia al caballero > radio_abandono (140 px)]
+REGRESANDO --> PERSIGUIENDO : [distancia al caballero < 80 px]
+REGRESANDO --> DORMIDO : [distancia a posicion_origen <= 3 px]
+DORMIDO --> MUERTO : recibir_golpe [vida = 0]
+PERSIGUIENDO --> MUERTO : recibir_golpe [vida = 0]
+REGRESANDO --> MUERTO : recibir_golpe [vida = 0]
+MUERTO --> [*] : queue_free()
+@enduml
+
+@startuml de_slime
+title Máquina de estados del Slime (enum Estado)
+[*] --> PATRULLANDO
+PATRULLANDO --> PATRULLANDO : _debe_girar() / direccion *= -1
+PATRULLANDO --> MUERTO : recibir_golpe [vida = 0]
+MUERTO --> [*] : queue_free()
+@enduml
+
+@startuml de03_ciclo_juego
+title DE-03 Ciclo del juego (enum Fase de EstadoJuego)
+[*] --> MENU
+MENU --> JUGANDO : Jugar (después de la introducción)
+JUGANDO --> PAUSA : Esc
+PAUSA --> JUGANDO : Continuar o Esc
+PAUSA --> JUGANDO : Reiniciar nivel / reiniciar()
+PAUSA --> MENU : Salir al menú
+JUGANDO --> VICTORIA : tocar el santuario [5/5 fragmentos]
+JUGANDO --> DERROTA : [corazones = 0]
+VICTORIA --> JUGANDO : Jugar de nuevo / reiniciar()
+DERROTA --> JUGANDO : Reintentar / reiniciar()
+VICTORIA --> MENU : Menú principal
+DERROTA --> MENU : Menú principal
+@enduml

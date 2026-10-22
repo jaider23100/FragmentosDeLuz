@@ -1,0 +1,36 @@
+@startuml c4_componentes
+!include <C4/C4_Component>
+title C4 nivel 3: componentes del ejecutable
+
+ContainerDb(cfg, "user://config.cfg", "ConfigFile")
+Container_Boundary(exe, "Ejecutable de Fragmentos de Luz") {
+  Component(estado, "EstadoJuego", "Autoload", "Estado de la partida y reglas RN-01 a RN-10; emite señales")
+  Component(escenas, "GestorEscenas", "Autoload", "Cambia entre pantallas con rutas centralizadas")
+  Component(audio, "GestorAudio", "Autoload", "Música por fase, efectos y volumen de buses")
+  Component(guardado, "GestorGuardado", "Autoload", "Carga y guarda la configuración")
+  Component(menus, "Pantallas", "Escenas de UI", "MenuPrincipal, Opciones, PantallaNarrativa, Victoria, Derrota, Creditos")
+  Component(nivel, "NivelBosque", "Escena", "TileMapLayer, caída al vacío, fin de partida")
+  Component(caballero, "Caballero", "Escena", "Movimiento, doble salto, impulso, espada, daño")
+  Component(enemigos, "Enemigos", "Escenas", "Enemigo, Slime, Murcielago")
+  Component(objetos, "Objetos", "Escenas", "Fragmento, Moneda, Checkpoint, Cartel, Roca, Viento, Puas, Santuario")
+  Component(hud, "Hud y MenuPausa", "Escenas de UI", "Corazones, fragmentos, puntaje y pausa")
+}
+
+Rel(nivel, caballero, "Instancia")
+Rel(nivel, enemigos, "Instancia")
+Rel(nivel, objetos, "Instancia")
+Rel(nivel, hud, "Instancia")
+Rel(caballero, estado, "recibir_dano()")
+Rel(enemigos, estado, "registrar_enemigo_derrotado()")
+Rel(objetos, estado, "recoger_fragmento(), activar_checkpoint()...")
+Rel_U(estado, hud, "Señales corazones_cambiados, puntos_cambiados, fragmentos_cambiados")
+Rel_U(estado, nivel, "Señales jugador_murio, nivel_completado")
+Rel_U(estado, audio, "Señal fase_cambiada")
+Rel(nivel, escenas, "cambiar_escena()")
+Rel(menus, escenas, "cambiar_escena(), iniciar_partida()")
+Rel(menus, audio, "aplicar_volumen()")
+Rel(guardado, cfg, "load() / save()")
+Rel(audio, guardado, "Volumen inicial")
+
+SHOW_LEGEND()
+@enduml

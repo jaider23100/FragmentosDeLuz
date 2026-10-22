@@ -1,0 +1,18 @@
+@startuml c4_contenedores
+!include <C4/C4_Container>
+title C4 nivel 2: contenedores de Fragmentos de Luz
+LAYOUT_LEFT_RIGHT()
+
+Person(jugador, "Jugador", "Juega con teclado y ratón")
+System_Boundary(juego, "Fragmentos de Luz") {
+  Container(exe, "Ejecutable", "FragmentosDeLuz.exe (runtime Godot 4.5, plantilla Windows x86_64)", "Bucle principal, física, render y audio")
+  Container(pck, "Paquete de recursos", "FragmentosDeLuz.pck", "Escenas .tscn, scripts .gd, sprites, audio y fuentes")
+  ContainerDb(cfg, "Almacenamiento local", "ConfigFile user://config.cfg", "Mejor puntaje y volumen de música y efectos")
+}
+
+Rel(jugador, exe, "Ejecuta y controla")
+Rel(exe, pck, "Carga al iniciar")
+Rel(exe, cfg, "Lee y escribe con GestorGuardado")
+
+SHOW_LEGEND()
+@enduml

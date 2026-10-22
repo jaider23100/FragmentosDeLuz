@@ -1,0 +1,16 @@
+@startuml c4_contexto
+!include <C4/C4_Context>
+title C4 nivel 1: contexto del sistema Fragmentos de Luz
+LAYOUT_LEFT_RIGHT()
+
+Person(jugador, "Jugador", "Jugador casual de 10 años en adelante; usa teclado y ratón")
+System(juego, "Fragmentos de Luz", "Juego de plataformas 2D para Windows hecho en Godot 4.5")
+System_Ext(github, "GitHub Releases", "Distribuye el ejecutable exportado (.zip)")
+System_Ext(windows, "Sistema operativo Windows", "Ventana, entrada, audio y sistema de archivos (user://)")
+
+Rel(jugador, github, "Descarga el juego desde")
+Rel(jugador, juego, "Juega con")
+Rel(juego, windows, "Dibuja, reproduce audio y guarda la configuración en")
+
+SHOW_LEGEND()
+@enduml
