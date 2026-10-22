@@ -29,5 +29,9 @@ func _on_opciones_cerrado() -> void:
 	_boton_opciones.grab_focus()
 
 
+func _on_boton_creditos_pressed() -> void:
+	GestorEscenas.cambiar_escena(GestorEscenas.CREDITOS)
+
+
 func _on_boton_salir_pressed() -> void:
 	get_tree().quit()
