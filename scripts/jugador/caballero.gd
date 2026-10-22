@@ -67,6 +67,7 @@ var _tiempo_parpadeo: float = 0.0
 
 
 func _ready() -> void:
+	add_to_group("jugador")
 	saltos_aereos_restantes = max_saltos_aereos
 	_area_espada.monitoring = false
 	_sprite.play(ANIMACIONES[estado])
@@ -97,6 +98,7 @@ func saltar() -> bool:
 		return false
 	velocity.y = -velocidad_salto
 	cambiar_estado(Estado.SALTANDO)
+	GestorAudio.reproducir_efecto("salto")
 	return true
 
 
@@ -107,6 +109,7 @@ func doble_salto() -> bool:
 	velocity.y = -velocidad_doble_salto
 	saltos_aereos_restantes -= 1
 	cambiar_estado(Estado.DOBLE_SALTO)
+	GestorAudio.reproducir_efecto("doble_salto")
 	return true
 
 
@@ -122,6 +125,7 @@ func dash() -> bool:
 	puede_dash = false
 	cambiar_estado(Estado.DASH)
 	_timer_dash.start(duracion_dash)
+	GestorAudio.reproducir_efecto("dash")
 	return true
 
 
@@ -135,6 +139,7 @@ func atacar() -> bool:
 	_area_espada.set_deferred("monitoring", true)
 	cambiar_estado(Estado.ATACANDO)
 	_timer_ataque.start(duracion_ataque)
+	GestorAudio.reproducir_efecto("espada")
 	return true
 
 
@@ -144,6 +149,7 @@ func recibir_dano() -> void:
 		return
 	if not EstadoJuego.recibir_dano():
 		return
+	GestorAudio.reproducir_efecto("dano")
 	_terminar_ataque()
 	if EstadoJuego.corazones == 0:
 		cambiar_estado(Estado.MUERTO)
