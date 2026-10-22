@@ -68,7 +68,6 @@ text = "Opciones"
 [node name="BotonCreditos" type="Button" parent="Contenedor"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
-disabled = true
 text = "Créditos"
 
 [node name="BotonSalir" type="Button" parent="Contenedor"]
@@ -82,4 +81,5 @@ unique_name_in_owner = true
 [connection signal="pressed" from="Contenedor/BotonJugar" to="." method="_on_boton_jugar_pressed"]
 [connection signal="pressed" from="Contenedor/BotonSalir" to="." method="_on_boton_salir_pressed"]
 [connection signal="pressed" from="Contenedor/BotonOpciones" to="." method="_on_boton_opciones_pressed"]
+[connection signal="pressed" from="Contenedor/BotonCreditos" to="." method="_on_boton_creditos_pressed"]
 [connection signal="cerrado" from="Opciones" to="." method="_on_opciones_cerrado"]
