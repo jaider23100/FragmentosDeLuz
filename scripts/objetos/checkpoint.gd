@@ -23,6 +23,7 @@ func activar() -> void:
 	activado = true
 	EstadoJuego.activar_checkpoint(global_position)
 	_sprite.frame = CUADRO_ACTIVO
+	GestorAudio.reproducir_efecto("checkpoint")
 
 
 func _on_body_entered(body: Node2D) -> void:

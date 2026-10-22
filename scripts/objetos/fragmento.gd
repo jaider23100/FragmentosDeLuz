@@ -5,3 +5,4 @@ extends Coleccionable
 
 func _al_recoger() -> void:
 	EstadoJuego.recoger_fragmento()
+	GestorAudio.reproducir_efecto("fragmento")
