@@ -12,5 +12,6 @@ Cada recurso de terceros se registra aquí al momento de agregarlo al proyecto (
 | `assets/musica/musica_nivel.mp3` ("Time for Adventure") | Música | Brackeys y Sofia Thirslund, en Brackeys Platformer Bundle | https://brackeysgames.itch.io/brackeys-platformer-bundle | CC0 | No exigida; se da en los créditos |
 | `assets/musica/musica_menu.mp3` ("[Chiptune] Medieval: The Bard's Tale") | Música | RandomMind | https://opengameart.org/node/94347 | CC0 | No exigida; se da en los créditos |
 | `assets/sprites/narrativa/` (ilustraciones de introducción y final) | Ilustraciones | Propias del equipo (`herramientas/arte/generar_ilustraciones.py`) | — | Propias | — |
+| `icon.svg` (ícono del proyecto y del ejecutable) | Ícono | Propio del equipo | — | Propio | — |
 | `addons/gut/` (GUT 9.5.0) | Complemento de pruebas | Butch Wesley (bitwes) | https://github.com/bitwes/Gut | MIT (`addons/gut/LICENSE.md`) | Licencia incluida en la carpeta |
 | Godot Engine 4.5 | Motor | Juan Linietsky, Ariel Manzur y colaboradores | https://godotengine.org/license | MIT | Aviso en la pantalla de créditos |
