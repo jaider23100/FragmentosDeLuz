@@ -1,0 +1,55 @@
+@startwbs edt
+title EDT del proyecto Fragmentos de Luz
+<style>
+wbsDiagram {
+  node { BackgroundColor #F4F1E8; LineColor #4A3B2C; FontSize 11 }
+  :depth(0) { BackgroundColor #5FF3FF; FontStyle bold }
+  :depth(1) { BackgroundColor #C9D8CE }
+}
+</style>
+* 1. Fragmentos de Luz
+** 1.1 Gestión del proyecto
+*** 1.1.1 Acta e interesados
+*** 1.1.2 Metodología y eventos Scrum
+*** 1.1.3 EDT, estimación y cronograma
+*** 1.1.4 Riesgos y RACI
+** 1.2 Diseño del juego (GDD)
+*** 1.2.1 Concepto, historia y personajes
+*** 1.2.2 Mecánicas y movimientos especiales
+*** 1.2.3 Nivel y mapa
+*** 1.2.4 Interfaz y wireframes
+*** 1.2.5 Arte, audio y licencias
+** 1.3 Requisitos y diseño de software
+*** 1.3.1 Requisitos y reglas de negocio
+*** 1.3.2 Backlog e historias de usuario
+*** 1.3.3 Casos de uso
+*** 1.3.4 Arquitectura C4 y patrones
+*** 1.3.5 Diagramas UML
+*** 1.3.6 Escenas, señales, entradas, capas y datos
+*** 1.3.7 ADR
+** 1.4 Build del juego
+*** 1.4.1 Repositorio y configuración
+*** 1.4.2 Jugador
+*** 1.4.3 Enemigos
+*** 1.4.4 Física y obstáculos
+*** 1.4.5 Nivel y objetos
+*** 1.4.6 Narrativa
+*** 1.4.7 Audio
+*** 1.4.8 Interfaz y flujo de pantallas
+*** 1.4.9 Persistencia
+** 1.5 Calidad y pruebas
+*** 1.5.1 Plan de pruebas
+*** 1.5.2 Pruebas unitarias
+*** 1.5.3 Casos de prueba funcionales
+*** 1.5.4 Pruebas de rendimiento
+*** 1.5.5 Playtesting
+*** 1.5.6 Defectos y matriz de trazabilidad
+** 1.6 Despliegue y cierre
+*** 1.6.1 Exportación y releases
+*** 1.6.2 Manuales de usuario y técnico
+*** 1.6.3 Notas de versión
+*** 1.6.4 Métricas de proceso
+*** 1.6.5 Retrospectiva
+*** 1.6.6 Video demo
+*** 1.6.7 Documento final y sustentación
+@endwbs
