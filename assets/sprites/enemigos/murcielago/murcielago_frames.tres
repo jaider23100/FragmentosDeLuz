@@ -1,0 +1,38 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/enemigos/murcielago/murcielago_dormido.png" id="1_lktmn"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemigos/murcielago/murcielago_volar.png" id="2_xgajx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3a06"]
+atlas = ExtResource("1_lktmn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1pcp"]
+atlas = ExtResource("2_xgajx")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cnox"]
+atlas = ExtResource("2_xgajx")
+region = Rect2(16, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3a06")
+}],
+"loop": false,
+"name": &"dormido",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1pcp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cnox")
+}],
+"loop": true,
+"name": &"volar",
+"speed": 8.0
+}]
