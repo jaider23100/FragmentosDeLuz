@@ -5,3 +5,4 @@ extends Coleccionable
 
 func _al_recoger() -> void:
 	EstadoJuego.registrar_moneda()
+	GestorAudio.reproducir_efecto("moneda")
