@@ -1,0 +1,21 @@
+
+CARGA 1: 0.134 s
+CARGA 2: 0.050 s
+CARGA 3: 0.066 s
+zona3 1: prom=60.0 min=59 max=61 proceso_max=20.15 ms escena=res://scenes/niveles/nivel_bosque.tscn pos=(1883.934, 
+392.9909)
+zona3 2: prom=59.8 min=51 max=62 proceso_max=18.61 ms escena=res://scenes/niveles/nivel_bosque.tscn pos=(1883.934, 
+392.9909)
+zona3 3: prom=60.0 min=60 max=60 proceso_max=17.89 ms escena=res://scenes/niveles/nivel_bosque.tscn pos=(1883.934, 
+392.9909)
+zona5 1: prom=60.0 min=58 max=60 proceso_max=72.92 ms escena=res://scenes/niveles/nivel_bosque.tscn pos=(3500.0, 
+392.9913)
+zona5 2: prom=60.0 min=60 max=60 proceso_max=18.72 ms escena=res://scenes/niveles/nivel_bosque.tscn pos=(3500.0, 
+392.9913)
+zona5 3: prom=60.0 min=60 max=60 proceso_max=18.12 ms escena=res://scenes/niveles/nivel_bosque.tscn pos=(3500.0, 
+392.9913)
+ERROR: 1 resources still in use at exit (run with --verbose for details).
+
+
+
+[exited with code 0]
