@@ -1,6 +1,7 @@
 @startgantt cronograma
 title Cronograma del proyecto Fragmentos de Luz (19-23 oct. 2026)
 language es
+scale 2
 printscale daily zoom 4
 Project starts 2026-10-19
 saturday are closed
@@ -13,11 +14,11 @@ sunday are closed
 [1.4.1 Repositorio y configuración] starts 2026-10-19 and lasts 1 day
 [1.4.2-1.4.9 Desarrollo del juego] as [DEV] starts 2026-10-19 and lasts 4 days
 [H-01 Proyecto constituido] happens 2026-10-19
-[H-02 Release v0.1.0] happens 2026-10-20
+[H-02 Versión publicada v0.1.0] happens 2026-10-20
 
 -- Sprint 2: juego completo --
 [1.5 Calidad y pruebas] as [QA] starts 2026-10-20 and lasts 4 days
-[H-03 Release v0.2.0] happens 2026-10-22
+[H-03 Versión publicada v0.2.0] happens 2026-10-22
 
 -- Sprint 3: calidad y entrega --
 [1.6 Despliegue y cierre] starts 2026-10-22 and lasts 2 days
