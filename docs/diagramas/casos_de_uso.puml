@@ -38,15 +38,15 @@ J --> CU05
 J --> CU06
 J --> CU07
 
-CU01 ..> VI : <<include>>
-RD .> CU03 : <<extend>>
-CU04 ..> RF : <<include>>
-CU04 ..> VC : <<include>>
-CU04 ..> GP : <<include>>
-CU05 ..> GC : <<include>>
-RN .> CU06 : <<extend>>
-CU05 .> CU06 : <<extend>>
-SM .> CU06 : <<extend>>
+CU01 ..> VI : <<incluir>>
+RD .> CU03 : <<extender>>
+CU04 ..> RF : <<incluir>>
+CU04 ..> VC : <<incluir>>
+CU04 ..> GP : <<incluir>>
+CU05 ..> GC : <<incluir>>
+RN .> CU06 : <<extender>>
+CU05 .> CU06 : <<extender>>
+SM .> CU06 : <<extender>>
 
 GP --> SA
 GC --> SA
