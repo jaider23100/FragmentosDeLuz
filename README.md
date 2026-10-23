@@ -36,9 +36,13 @@ Las pruebas unitarias usan **GUT 9.5.0** (`addons/gut/`) y están en `test/unit/
 
 El reporte JUnit XML queda en `docs/reporte_gut.xml`.
 
-## Release
+## Release (jugar sin instalar Godot)
 
-*Pendiente: enlace a la release v1.0.0.*
+1. Descarga `FragmentosDeLuz-v1.0.0-windows.zip` desde la release v1.0.0: https://github.com/jaider23100/FragmentosDeLuz/releases/tag/v1.0.0
+2. Descomprímelo en cualquier carpeta.
+3. Abre `FragmentosDeLuz.exe` (deja el `.pck` en la misma carpeta). Requiere Windows 10 u 11 de 64 bits.
+
+El mejor puntaje y el volumen se guardan en `%APPDATA%\Godot\app_userdata\Fragmentos de Luz\config.cfg`.
 
 ## Controles
 

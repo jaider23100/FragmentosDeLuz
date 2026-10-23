@@ -6,6 +6,17 @@ El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y e
 
 ## [Sin publicar]
 
+## [1.0.0] - 2026-10-23
+
+### Añadido
+- Guardado del mejor puntaje y del volumen en `user://config.cfg` con el autoload GestorGuardado; tolera archivos ausentes o dañados (HU-21).
+- El menú principal muestra el mejor puntaje y la victoria avisa "¡Nuevo mejor puntaje!" (RN-09).
+- Pantalla de créditos con el equipo, los recursos de terceros, sus licencias y el aviso de Godot (HU-22).
+- Ejecutable de Windows que funciona sin instalar Godot (HU-23).
+
+### Cambiado
+- El volumen inicial se toma de la configuración guardada y se guarda al presionar Volver en Opciones.
+
 ## [0.2.0] - 2026-10-22
 
 ### Añadido
